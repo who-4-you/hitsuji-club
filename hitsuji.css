@@ -1,0 +1,334 @@
+/* 基本設定 */
+:root {
+    --bg-black: #111111; /* より深い黒へ */
+    --bg-darker: #0a0a0a;
+    --accent-pink: #d63384; /* 少し落ち着いたシックなピンクに調整 */
+    --text-white: #e0e0e0;
+    --text-gray: #888888;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    font-family: 'Shippori Mincho', serif;
+    line-height: 2.2; /* 行間をさらに広げてゆったりと */
+    letter-spacing: 0.1em;
+}
+
+/* ロゴ画像のサイズを調整 */
+.logo img {
+    height: 45px;      
+    width: auto;       /* 横幅は自動計算（比率維持） */
+    max-width: 100%;   /* 親要素からはみ出さないように */
+    vertical-align: middle;
+}
+
+/* ナビゲーションバー自体の余白も調整（ロゴを小さくしてもバーが太い場合） */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;  
+    background-color: rgba(17, 17, 17, 0.8);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.4s;
+}
+
+nav ul li a:hover {
+    color: var(--accent-pink);
+}
+
+/* ヒーローセクション */
+.hero {
+    height: 100vh; /* 画面いっぱいに */
+    background: linear-gradient(rgba(17,17,17,0.7), rgba(17,17,17,0.7)), url('images/hero.jpg') center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* 縦書きの美しいキャッチコピー */
+.vertical-text {
+    writing-mode: vertical-rl; /* 縦書き指定 */
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    line-height: 2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.hero-sub {
+    font-size: 1.2rem;
+    color: var(--accent-pink);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+}
+
+/* セクション共通（余白を大幅に拡大） */
+.section {
+    padding: 70px 3%; 
+}
+
+.section-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.bg-darker {
+    background-color: var(--bg-darker);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover; /* 箱の形に合わせて綺麗にトリミングする */
+}
+
+/* セクションタイトルの縦書き化 */
+.vertical-title {
+    writing-mode: vertical-rl;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    padding-left: 20px;
+    border-left: 1px solid var(--accent-pink); /* 左側に繊細なピンクの線 */
+    color: var(--text-white);
+    height: 200px; /* 縦書きの高さを確保 */
+    margin-bottom: 40px;
+}
+
+.vertical-title.center {
+    margin: 0 auto 60px auto;
+}
+
+.en-title {
+    display: block;
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    color: var(--accent-pink);
+    margin-top: 20px;
+    letter-spacing: 0.1em;
+}
+
+/* スプリットレイアウト（写真と文章を左右に） */
+.layout-split {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.text-box {
+    flex: 1;
+    display: flex;
+    flex-direction: row-reverse; /* 縦書きタイトルを右側に */
+    gap: 40px;
+}
+
+.image-box {
+    flex: 1;
+}
+
+.placeholder-img {
+    aspect-ratio: 3/4; 
+    background-color: #222;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+}
+
+/* グリッドレイアウト */
+/* ギャラリー全体のグリッド設定 */
+.grid {
+    display: grid;
+    /* 1行に3枚並べる設定。スマホでは1枚、タブレット以上で3枚になるよう調整 */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px; /* 写真同士の隙間 */
+}
+
+/* =========================================
+   スライダー（Swiper）のスタイル
+========================================= */
+.swiper {
+    width: 100%;
+    /* 高さを固定して、大きくなりすぎるのを防ぐ */
+    height: 400px; 
+    padding-bottom: 40px; /* 下部のドット（ページネーション）用の余白 */
+}
+
+.swiper-slide {
+    background-color: #222;
+    overflow: hidden;
+    /* シックに見せるための枠線 */
+    border: 1px solid #333; 
+}
+
+/* スライドの中の画像 */
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    /* 写真の比率を維持したまま、箱のサイズに合わせて綺麗に切り抜く */
+    object-fit: cover; 
+    transition: 0.8s ease;
+}
+
+/* 少しだけマウスオーバーでズームさせる（PC用） */
+.swiper-slide:hover img {
+    transform: scale(1.05);
+}
+
+/* 下部のドットの色をアクセントカラー（ピンク）に変更 */
+.swiper-pagination-bullet-active {
+    background-color: var(--accent-pink) !important;
+}
+
+/* ボタンデザイン（より上品に） */
+.link-group {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    font-family: inherit;
+    display: inline-block;
+    padding: 16px 40px;
+    border-radius: 0; /* 丸みを取ってエッジを効かせる */
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    transition: 0.4s;
+    min-width: 250px;
+    text-align: center;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.btn-tabelog {
+    background-color: transparent;
+    color: #e67e22;
+    border-color: #e67e22;
+}
+
+.btn-tabelog:hover {
+    background-color: #e67e22;
+    color: var(--bg-black);
+}
+
+.btn-hotpepper {
+    background-color: transparent;
+    color: var(--accent-pink); /* ホットペッパー赤ではなくテーマのピンクに統一 */
+    border-color: var(--accent-pink);
+}
+
+.btn-hotpepper:hover {
+    background-color: var(--accent-pink);
+    color: var(--bg-black);
+}
+
+.btn-instagram {
+    background-color: transparent;
+    color: #E1306C; /* Instagramのブランドカラー */
+    border-color: #E1306C;
+}
+
+.btn-instagram:hover {
+    background-color: #E1306C;
+    color: #ffffff; 
+}
+footer {
+    padding: 60px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    letter-spacing: 0.2em;
+    border-top: 1px solid #222;
+}
+
+/* 背景の暗い部分（初期状態は非表示） */
+.modal {
+    display: none; /* 最初は隠しておく */
+    position: fixed;
+    z-index: 999; /* 画面の一番手前に持ってくる */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* 黒の半透明 */
+    backdrop-filter: blur(5px); /* 背景を少しぼかす */
+}
+
+/* PDFが入る中心の箱 */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 画面のど真ん中に配置 */
+    width: 90%;
+    max-width: 800px;
+    height: 80vh; /* 画面の高さの80% */
+    background-color: var(--bg-black);
+    border: 1px solid var(--accent-pink); /* ピンクの枠線 */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+/* 閉じるボタン（×） */
+.close-btn {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: var(--text-white);
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: var(--accent-pink); /* ホバーでピンクに */
+}
+
+/* PDFを表示するiframeの枠線を消す */
+.modal-content iframe {
+    border: none;
+    display: block;
+}
