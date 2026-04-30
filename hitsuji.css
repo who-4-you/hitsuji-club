@@ -332,3 +332,72 @@ footer {
     border: none;
     display: block;
 }
+/* =========================================
+   📱 スマホ向けレイアウト（画面幅768px以下）
+========================================= */
+@media screen and (max-width: 768px) {
+    
+    /* 1. 全体的な余白の調整（スマホの狭い画面を広く使う） */
+    .section {
+        padding: 60px 5%; /* 上下の余白を縮めてスッキリさせる */
+    }
+    .section-inner {
+        width: 100%;
+    }
+
+    /* 2. ナビゲーションバーの調整（はみ出し防止） */
+    nav {
+        padding: 10px 5%;
+        flex-direction: column; /* ロゴとメニューを縦に並べる場合 */
+        gap: 10px;
+    }
+    nav ul {
+        width: 100%;
+        justify-content: space-between;
+        font-size: 0.8rem; /* 文字を少し小さくして収める */
+        padding: 0;
+    }
+    .logo img {
+        height: 30px; /* スマホではロゴを少し小さめに */
+    }
+
+    /* 3. ヒーローセクション（トップ画面）の文字サイズ調整 */
+    .hero-content h1 {
+        font-size: 10vw; /* 画面幅に合わせて文字サイズを自動調整 */
+    }
+    .hero-sub {
+        font-size: 1rem;
+    }
+
+    /* 4. Aboutセクションの横並びを「縦積み」に変更 */
+    .layout-split {
+        display: flex;
+        flex-direction: column; /* PCの横並びを、スマホでは縦積みに！ */
+        gap: 30px;
+    }
+    .text-box, .image-box {
+        width: 100%; /* それぞれ画面幅いっぱい（100%）に広げる */
+        padding: 0;
+    }
+
+    /* 5. 縦書きタイトルのサイズ調整 */
+    .vertical-title {
+        font-size: 1.8rem;
+    }
+    .vertical-title .en-title {
+        font-size: 1rem;
+    }
+
+    /* 6. ご予約・SNSボタンを押しやすく縦に並べる */
+    .link-group {
+        display: flex;
+        flex-direction: column; /* ボタンを縦積みにする */
+        gap: 15px;
+        width: 100%;
+    }
+    .btn {
+        width: 100%; /* ボタンを画面の横幅いっぱいに広げる */
+        box-sizing: border-box; /* paddingを含めて100%に収める（はみ出し防止） */
+        min-width: unset; /* PC用の最小幅指定を解除 */
+    }
+}
