@@ -75,31 +75,17 @@
                 <h2 class="vertical-title center">空間とお料理<span class="en-title">Gallery</span></h2>
                 
                 <div class="swiper mySwiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="images/food1.jpg" alt="厳選された羊肉"></div>
-                        <div class="swiper-slide"><img src="images/food2.jpg" alt="レバー"></div>
-                        <div class="swiper-slide"><img src="images/food3.jpg" alt="ラムチョップ"></div>
-                        <div class="swiper-slide"><img src="images/food4.jpg" alt="生ラム上ラム"></div>
-                        <div class="swiper-slide"><img src="images/interior1.jpg" alt="お酒"></div>
-                        <div class="swiper-slide"><img src="images/interior2.jpg" alt="テーブル席"></div>
-                        <div class="swiper-slide"><img src="images/interior3.jpg" alt="外装"></div>
-                    </div>
+                    <div id="js-gallery-container" class="swiper-wrapper"></div>
                     <div class="swiper-pagination"></div>
                 </div>
-                </div>
+            </div>
         </section>
 
         <section id="reserve" class="section">
             <div class="section-inner">
                 <h2 class="vertical-title center">ご予約<span class="en-title">Reserve</span></h2>
                 <p class="reserve-intro">大切な方とのお食事、ご宴会に。<br>貸切のご相談も承っております。</p>
-                <div class="link-group">
-                    <a href="https://tabelog.com/kanagawa/A1407/A140701/14101861/" class="btn btn-tabelog" target="_blank" rel="noopener">食べログ</a>
-                    <a href="https://www.hotpepper.jp/strJ004536456/" class="btn btn-hotpepper" target="_blank" rel="noopener">HOT PEPPER</a>
-                    <a href="https://www.instagram.com/hitsujiclub_1129/" class="btn btn-instagram" target="_blank" rel="noopener">
-                     <i class="fa-brands fa-instagram"></i> Instagram
-</a>
-                </div>
+                <div id="js-link-group" class="link-group"></div>
             </div>
         </section>
     </main>
@@ -108,63 +94,14 @@
         <div class="footer-content">
             <p class="footer-logo">羊肉倶楽部</p>
             <p class="address">〒252-0206 神奈川県相模原市中央区淵野辺 4-17-16</p>
-             <p class="tel">TEL:080-3377-2929</p>
+            <p class="tel">TEL:080-3377-2929</p>
             <p class="copyright">&copy; HITSUJI CLUB All Rights Reserved.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        const swiper = new Swiper('.mySwiper', {
-            loop: true, // 最後の写真まで行ったら最初に戻る
-            speed: 1000, // スライドの切り替わりスピード
-            autoplay: {
-                delay: 2500, // 2.5秒ごとに自動スライド
-                disableOnInteraction: false, // ユーザーが触った後も自動再生を止めない
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            // 画面幅に応じた表示枚数の設定
-            breakpoints: {
-                // スマホ（幅0px〜）
-                0: {
-                    slidesPerView: 1.2,
-                    spaceBetween: 15,
-                },
-                // PC・タブレット（幅768px〜）
-                768: {
-                    slidesPerView: 3, // PCでは3枚並べる
-                    spaceBetween: 30, // 写真同士の隙間
-                }
-            }
-        });
-    </script>
 
-    <script>
-        // HTMLから必要な要素を取得
-        const modal = document.getElementById("pdf-modal");
-        const openBtn = document.getElementById("open-menu-btn");
-        const closeBtn = document.querySelector(".close-btn");
-
-        // ボタンをクリックしたらモーダルを表示
-        openBtn.addEventListener("click", function() {
-            modal.style.display = "block";
-        });
-
-        // ×ボタンをクリックしたらモーダルを非表示
-        closeBtn.addEventListener("click", function() {
-            modal.style.display = "none";
-        });
-
-        // モーダルの外側（黒い背景部分）をクリックしても非表示にする
-        window.addEventListener("click", function(event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        });
-    </script>
-
+    <script src="hitsuji.js"></script>
+    
 </body>
 </html>
